@@ -37,6 +37,9 @@ export default function Converter() {
                 setConvertResult(res.data[currencyTo]);
             })
         }
+        else {
+            setConvertResult(0)
+        }
     }
     const finalAmount = () => {
         if (convertResult) {
