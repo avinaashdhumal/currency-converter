@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Converter.css'
 export default function Converter() {
@@ -10,9 +10,6 @@ export default function Converter() {
     const [convertResult, setConvertResult] = useState(null)
     const URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json"
     useEffect(() => {
-        // const sub = axios.get(URL).then((res) => {
-        //     setAllCurrencies(res.data);
-        // })
         setLoading(true)
         const subscribe = async () => {
             await axios.get(URL).then((res) => {
@@ -28,7 +25,6 @@ export default function Converter() {
         }
 
     }, [loading])
-    console.log(allCurrencies)
 
     // getting the converted amount
     function getAmount(e) {
@@ -42,15 +38,12 @@ export default function Converter() {
             })
         }
     }
-    const finamalAmount = () => {
+    const finalAmount = () => {
         if (convertResult) {
             return convertResult * convertAmount;
         }
         return "0";
     }
-    console.log("Currency to change", currencyFrom)
-    console.log("Currency convert into", currencyTo)
-    console.log("Convert Amount is: ", convertAmount)
     return (
         <div className="converter-container">
             <h2>Convert</h2>
@@ -81,9 +74,8 @@ export default function Converter() {
             </form>
             <button onClick={getAmount}>Convert</button>
             <div>
-                <h3><strong>{finamalAmount()}</strong></h3>
+                <h3><strong>{finalAmount()}</strong></h3>
             </div>
-            {/* Using Semantics UI */}
         </div>
     )
 }
