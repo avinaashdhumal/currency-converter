@@ -69,6 +69,7 @@ export default function Converter() {
                     }
                 </select>
             </div>
+            <h2>Amount</h2>
             <form>
                 <input type="number" onChange={(e) => { setConvertAmount(e.target.value) }} placeholder="Amount" />
             </form>
