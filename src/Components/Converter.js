@@ -40,7 +40,7 @@ export default function Converter() {
     }
     const finalAmount = () => {
         if (convertResult) {
-            return convertResult * convertAmount;
+            return (convertResult * convertAmount).toFixed(2);
         }
         return "0";
     }
